@@ -1,85 +1,68 @@
 <!doctype html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f6eddf">
-  <title>Little Corner Café — Barista Rush</title>
+  <meta name="description" content="Evde Türk kahvesi yapmak için adım adım, gerçek zamanlı bir rehber.">
+  <title>Bir Fincan — Gerçek Kahve Rehberi</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="game-shell">
+  <main class="page-shell">
     <header class="topbar">
-      <a class="brand" href="#" aria-label="Little Corner Café home"><span class="brand-mark">☕</span><span><b>little corner</b><small>COFFEE HOUSE</small></span></a>
-      <div class="shift-label"><span class="live-dot"></span> MORNING SHIFT</div>
-      <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound" title="Toggle sound">♫ <span>Sound on</span></button>
+      <a class="brand" href="#top" aria-label="Bir Fincan ana sayfa"><span class="brand-icon">☕</span><span><b>bir fincan</b><small>EVDE KAHVE REHBERİ</small></span></a>
+      <div class="top-note"><span class="live-dot"></span><span data-tr="ACELE YOK · KAHVE ZAMANI" data-en="NO RUSH · COFFEE TIME">ACELE YOK · KAHVE ZAMANI</span></div>
+      <button class="language-button" id="languageButton" type="button" aria-label="Switch language">EN</button>
     </header>
 
-    <section class="game-layout" aria-label="Barista game">
-      <aside class="side-panel">
-        <div class="panel-heading"><span>YOUR SHIFT</span><span class="sun-icon">☀</span></div>
-        <div class="shift-clock"><span class="clock-face">◷</span><div><strong id="clock">08:00</strong><small>AM · OPENING</small></div></div>
-        <div class="stat-row"><span>Orders served</span><strong id="servedCount">0 <small>/ 8</small></strong></div>
-        <div class="progress-track"><i id="progressBar"></i></div>
-        <div class="stat-row tips-row"><span>Tips earned</span><strong id="tips">$0.00</strong></div>
-        <div class="streak-wrap"><span>STREAK</span><div id="streakDots" class="streak-dots"><i></i><i></i><i></i></div></div>
-        <div class="side-divider"></div>
-        <div class="recipe-card">
-          <span class="recipe-label">TODAY'S SPECIAL</span>
-          <div class="special-icon">🍯</div>
-          <strong>Honey Oat Latte</strong>
-          <small>Espresso · Oat milk<br>Honey · Foam</small>
-          <span class="special-price">$5.50</span>
-        </div>
-        <div class="hint-card"><span>✦ BARISTA TIP</span><p>Read the ticket carefully. Every ingredient counts!</p></div>
-      </aside>
-
-      <section class="cafe-scene">
-        <div class="scene-topline"><div><span class="open-pill"><i></i> OPEN</span><span class="weather">☀ &nbsp;72°</span></div><div class="scene-date">TUESDAY, MAY 14</div></div>
-        <div class="window-view"><div class="window-sun"></div><div class="cloud cloud-one"></div><div class="cloud cloud-two"></div><div class="building building-one"></div><div class="building building-two"></div><div class="tree-shape tree-left"></div><div class="tree-shape tree-right"></div><div class="window-frame"></div></div>
-        <div class="shelf"><span>✿</span><span>☘</span><span>✿</span><span>☘</span><span>✿</span><span>☘</span><span>✿</span></div>
-        <div class="counter-back"><div class="menu-board"><strong>GOOD DAYS START HERE</strong><span>ESPRESSO&nbsp; · &nbsp;LATTE&nbsp; · &nbsp;LOVE</span></div><div class="jar jar-one">◌</div><div class="jar jar-two">◌</div><div class="machine"><div class="machine-top"><span>LC</span><i></i></div><div class="machine-face"><div class="gauge">◉</div><div class="machine-buttons"><i></i><i></i><i></i></div><div class="portafilter"></div></div><div class="drip-tray"></div><div class="machine-cup" id="machineCup">☕</div></div><div class="plant-pot">🌱</div></div>
-        <div class="counter-front"><div class="counter-edge"></div><div class="counter-wood"></div></div>
-        <div class="scene-floor"><div class="floor-line"></div></div>
-        <div class="welcome-sign">made with <span>♥</span> &nbsp;in this little corner</div>
-      </section>
-
-      <aside class="order-panel">
-        <div class="order-head"><div><span class="eyebrow">NEXT UP</span><h2>Order board</h2></div><div class="queue-count"><span id="queueCount">3</span><small>WAITING</small></div></div>
-        <div class="customer-card" id="customerCard">
-          <div class="customer-top"><div class="avatar" id="avatar">👩🏽‍🦱</div><div class="customer-info"><strong id="customerName">Maya</strong><small id="customerMood">Ready for a pick-me-up</small></div><div class="ticket-number" id="ticketNumber">#01</div></div>
-          <div class="patience-label"><span>PATIENCE</span><span id="patienceText">100%</span></div>
-          <div class="patience-track"><i id="patienceBar"></i></div>
-          <div class="ticket"><div class="ticket-title"><span>THE ORDER</span><span>♥</span></div><div class="drink-title" id="drinkName">Honey oat latte</div><div class="order-details" id="orderDetails"></div><div class="ticket-bottom"><span>YOUR TOTAL</span><strong id="orderPrice">$5.50</strong></div></div>
-        </div>
-        <div class="make-heading"><span>MAKE THEIR DRINK</span><small>Tap to add</small></div>
-        <div class="ingredient-grid">
-          <button class="ingredient" data-ingredient="espresso"><span class="ingredient-icon espresso-icon">●</span><b>Espresso</b><small>1 shot</small><kbd>1</kbd></button>
-          <button class="ingredient" data-ingredient="milk"><span class="ingredient-icon milk-icon">◒</span><b>Milk</b><small>Steamed</small><kbd>2</kbd></button>
-          <button class="ingredient" data-ingredient="oat"><span class="ingredient-icon oat-icon">❋</span><b>Oat milk</b><small>Steamed</small><kbd>3</kbd></button>
-          <button class="ingredient" data-ingredient="foam"><span class="ingredient-icon foam-icon">☁</span><b>Foam</b><small>Silky top</small><kbd>4</kbd></button>
-          <button class="ingredient" data-ingredient="honey"><span class="ingredient-icon honey-icon">♧</span><b>Honey</b><small>Sweet drizzle</small><kbd>5</kbd></button>
-          <button class="ingredient" data-ingredient="ice"><span class="ingredient-icon ice-icon">◇</span><b>Ice</b><small>On the rocks</small><kbd>6</kbd></button>
-        </div>
-        <div class="cup-area"><div class="cup-label">YOUR CUP <span id="cupStatus">EMPTY</span></div><div class="cup-display"><div class="cup-graphic" id="cupGraphic"><div class="cup-liquid"></div><div class="cup-art">☕</div></div><div class="cup-contents" id="cupContents"><span class="empty-cup">Add ingredients to start brewing</span></div></div></div>
-        <div class="action-row"><button class="reset-button" id="resetButton" aria-label="Clear cup">↺</button><button class="serve-button" id="serveButton"><span>Serve drink</span><b>↗</b></button></div>
-      </aside>
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow" data-tr="KÜÇÜK BİR RİTÜEL" data-en="A SMALL DAILY RITUAL">KÜÇÜK BİR RİTÜEL</p>
+        <h1 data-tr="Bugün kahveni<br><em>kendin yap.</em>" data-en="Make your own<br><em>coffee today.</em>">Bugün kahveni<br><em>kendin yap.</em></h1>
+        <p class="hero-text" data-tr="Cezvede, bol köpüklü Türk kahvesi. Malzemeleri hazırla; adımları takip et, fincanın hazır olsun." data-en="A foamy cup of Turkish coffee, made in a cezve. Gather your ingredients, follow along, and enjoy.">Cezvede, bol köpüklü Türk kahvesi. Malzemeleri hazırla; adımları takip et, fincanın hazır olsun.</p>
+        <div class="hero-meta"><span>01</span><span class="meta-rule"></span><span data-tr="TÜRK KAHVESİ" data-en="TURKISH COFFEE">TÜRK KAHVESİ</span><span class="meta-dot">·</span><span data-tr="5–8 DAKİKA" data-en="5–8 MINUTES">5–8 DAKİKA</span></div>
+      </div>
+      <div class="hero-art" aria-label="Türk kahvesi ve cezve çizimi">
+        <div class="art-sun"></div><span class="art-star star-one">✳</span><span class="art-star star-two">✦</span>
+        <div class="art-steam steam-one"></div><div class="art-steam steam-two"></div><div class="art-steam steam-three"></div>
+        <div class="cezve"><div class="cezve-coffee"></div><div class="cezve-handle"></div></div>
+        <div class="serving-cup"><div class="cup-coffee"></div><div class="cup-handle"></div><span>☕</span></div>
+        <div class="art-table"></div><div class="art-caption" data-tr="sakin sakin, tam kıvamında" data-en="slowly, just right">sakin sakin, tam kıvamında</div>
+      </div>
     </section>
-    <footer><span>Little Corner Café</span><span>Take a breath. Make something lovely.</span><span>EST. 2018 &nbsp;✿</span></footer>
-  </main>
 
-  <div class="overlay" id="overlay">
-    <div class="modal-card" id="modalCard">
-      <div class="modal-sparkle">✦ &nbsp; ✿ &nbsp; ✦</div>
-      <div class="modal-cup">☕</div>
-      <p class="modal-kicker">A LITTLE CORNER OF YOUR OWN</p>
-      <h1 id="modalTitle">The morning<br><em>rush</em> is on.</h1>
-      <p class="modal-copy" id="modalCopy">The espresso machine is warm, the sun is out, and your first regular is on the way. Make every cup count!</p>
-      <div class="how-to"><div><span>01</span><b>Read the ticket</b><small>Check every ingredient</small></div><div><span>02</span><b>Build the drink</b><small>Tap ingredients or press 1–6</small></div><div><span>03</span><b>Serve with love</b><small>Get all 8 orders right!</small></div></div>
-      <button id="startButton" class="start-button">Start your shift <span>→</span></button>
-      <small class="modal-foot">A cozy little coffee shop game</small>
-    </div>
-  </div>
+    <section class="brew-layout" aria-label="Türk kahvesi hazırlama rehberi">
+      <aside class="recipe-panel">
+        <div class="section-kicker"><span>01</span><span data-tr="ÖNCE HAZIRLA" data-en="GET READY">ÖNCE HAZIRLA</span></div>
+        <h2 data-tr="Malzemelerin" data-en="What you'll need">Malzemelerin</h2>
+        <p class="panel-intro" data-tr="Bu tarif bir Türk kahvesi fincanı içindir. Miktarı ve şekeri kendine göre ayarla." data-en="This recipe is for one Turkish coffee cup. Adjust the servings and sweetness to your taste.">Bu tarif bir Türk kahvesi fincanı içindir. Miktarı ve şekeri kendine göre ayarla.</p>
+
+        <label class="field-label" for="servings" data-tr="KAÇ FİNCAN?" data-en="HOW MANY CUPS?">KAÇ FİNCAN?</label>
+        <div class="select-wrap"><select id="servings" aria-label="Fincan sayısı"><option value="1" data-tr="1 fincan" data-en="1 cup">1 fincan</option><option value="2" data-tr="2 fincan" data-en="2 cups">2 fincan</option></select><span>⌄</span></div>
+
+        <div class="ingredient-list" aria-live="polite">
+          <div class="ingredient-row"><span class="ingredient-symbol water-symbol">◉</span><span><b data-tr="Soğuk içme suyu" data-en="Cold drinking water">Soğuk içme suyu</b><small data-tr="Her fincan için yaklaşık 65 ml" data-en="About 65 ml per cup">Her fincan için yaklaşık 65 ml</small></span><strong id="waterAmount">65 ml</strong></div>
+          <div class="ingredient-row"><span class="ingredient-symbol coffee-symbol">✳</span><span><b data-tr="Türk kahvesi" data-en="Turkish-ground coffee">Türk kahvesi</b><small data-tr="Her fincan için 1 tepeleme çay kaşığı (~6 g)" data-en="1 heaped teaspoon (~6 g) per cup">Her fincan için 1 tepeleme çay kaşığı (~6 g)</small></span><strong id="coffeeAmount">~6 g</strong></div>
+          <div class="ingredient-row sugar-row"><span class="ingredient-symbol sugar-symbol">◇</span><span><b data-tr="Şeker (isteğe bağlı)" data-en="Sugar (optional)">Şeker (isteğe bağlı)</b><small id="sugarAmount">Sade · 0 çay kaşığı</small></span><div class="sugar-control" role="group" aria-label="Şeker miktarı"><button type="button" data-sugar="0" class="sugar-choice selected" aria-pressed="true" data-tr="Sade" data-en="None">Sade</button><button type="button" data-sugar="1" class="sugar-choice" aria-pressed="false" data-tr="Az" data-en="Light">Az</button><button type="button" data-sugar="2" class="sugar-choice" aria-pressed="false" data-tr="Orta" data-en="Medium">Orta</button><button type="button" data-sugar="3" class="sugar-choice" aria-pressed="false" data-tr="Şekerli" data-en="Sweet">Şekerli</button></div></div>
+        </div>
+        <div class="equipment"><span class="equipment-icon">⌂</span><div><b data-tr="Gerekli ekipman" data-en="You'll also need">Gerekli ekipman</b><p data-tr="Cezve · fincan · çay kaşığı · ocak" data-en="Cezve (small coffee pot) · cup · teaspoon · stove">Cezve · fincan · çay kaşığı · ocak</p></div></div>
+        <div class="safety-note"><span>!</span><p data-tr="Ocak başından ayrılma. Kahve köpürüp hızla yükselebilir; cezvenin sapını tutarken dikkat et." data-en="Stay by the stove. Coffee can rise quickly; take care when handling the hot cezve.">Ocak başından ayrılma. Kahve köpürüp hızla yükselebilir; cezvenin sapını tutarken dikkat et.</p></div>
+      </aside>
+
+      <section class="steps-panel">
+        <div class="steps-header"><div><div class="section-kicker"><span>02</span><span data-tr="BİRLİKTE YAPALIM" data-en="BREW ALONG">BİRLİKTE YAPALIM</span></div><h2 data-tr="Adım adım" data-en="Step by step">Adım adım</h2></div><div class="progress-badge"><span id="progressText">0 / 4</span><div class="mini-progress"><i id="progressFill"></i></div></div></div>
+        <div class="steps-list" id="stepsList">
+          <article class="step-card active" data-step="0"><div class="step-marker"><span>1</span><i>✓</i></div><div class="step-content"><div class="step-top"><h3 data-tr="Suyu ve kahveyi ölç" data-en="Measure water and coffee">Suyu ve kahveyi ölç</h3><span class="step-time" data-tr="1 dk" data-en="1 min">1 dk</span></div><p data-tr="Soğuk suyu fincanınla ölçüp cezveye dök. Kahveyi (ve şekeri kullanacaksan şekeri) ekle, kahve tamamen ıslanana kadar karıştır." data-en="Measure cold water with your cup and pour it into the cezve. Add the coffee (and sugar, if using); stir until all the grounds are wet.">Soğuk suyu fincanınla ölçüp cezveye dök. Kahveyi (ve şekeri kullanacaksan şekeri) ekle, kahve tamamen ıslanana kadar karıştır.</p><button class="step-done" type="button" data-tr="Bu adımı tamamladım" data-en="I did this step">Bu adımı tamamladım <span>→</span></button></div></article>
+          <article class="step-card" data-step="1"><div class="step-marker"><span>2</span><i>✓</i></div><div class="step-content"><div class="step-top"><h3 data-tr="Kısık ateşe al" data-en="Set over low heat">Kısık ateşe al</h3><span class="step-time" data-tr="2–4 dk" data-en="2–4 min">2–4 dk</span></div><p data-tr="Cezveyi ocağın küçük gözüne, kısık ateşe koy. Bundan sonra karıştırma. Başından ayrılmadan köpüğün yavaşça yükselmesini bekle." data-en="Place the cezve over low heat. Don't stir from this point on. Stay beside it and watch the foam rise slowly.">Cezveyi ocağın küçük gözüne, kısık ateşe koy. Bundan sonra karıştırma. Başından ayrılmadan köpüğün yavaşça yükselmesini bekle.</p><div class="timer-box"><div><span class="timer-icon">◷</span><span class="timer-label" data-tr="İsteğe bağlı hatırlatıcı" data-en="Optional reminder">İsteğe bağlı hatırlatıcı</span></div><strong id="timerDisplay">03:00</strong><button id="timerButton" type="button" data-state="idle" data-tr="Hatırlatıcıyı başlat" data-en="Start reminder">Hatırlatıcıyı başlat</button><small data-tr="Süreyi beklemek yerine köpüğe bak; ocaklar farklıdır." data-en="Watch the foam, not the clock—stoves vary.">Süreyi beklemek yerine köpüğe bak; ocaklar farklıdır.</small></div><button class="step-done" type="button" data-tr="Bu adımı tamamladım" data-en="I did this step">Bu adımı tamamladım <span>→</span></button></div></article>
+          <article class="step-card" data-step="2"><div class="step-marker"><span>3</span><i>✓</i></div><div class="step-content"><div class="step-top"><h3 data-tr="Köpürünce ocaktan al" data-en="Lift it when the foam rises">Köpürünce ocaktan al</h3><span class="step-time" data-tr="Dikkatle" data-en="Watch closely">Dikkatle</span></div><p data-tr="Köpük cezvenin ağzına doğru yükselirken, taşmadan hemen önce cezveyi ocaktan al. Kahveyi fokur fokur kaynatma." data-en="As the foam climbs toward the rim, lift the cezve off the heat just before it spills. Don't let the coffee boil vigorously.">Köpük cezvenin ağzına doğru yükselirken, taşmadan hemen önce cezveyi ocaktan al. Kahveyi fokur fokur kaynatma.</p><button class="step-done" type="button" data-tr="Bu adımı tamamladım" data-en="I did this step">Bu adımı tamamladım <span>→</span></button></div></article>
+          <article class="step-card" data-step="3"><div class="step-marker"><span>4</span><i>✓</i></div><div class="step-content"><div class="step-top"><h3 data-tr="Köpüğü paylaştır, servis et" data-en="Share the foam and serve">Köpüğü paylaştır, servis et</h3><span class="step-time" data-tr="1 dk" data-en="1 min">1 dk</span></div><p data-tr="Köpüğü kaşıkla fincanlara paylaştır, kahveyi yavaşça dök. Telvenin dibe çökmesi için 1 dakika bekle; afiyet olsun!" data-en="Spoon the foam into the cups, then pour the coffee slowly. Wait 1 minute for the grounds to settle. Enjoy!">Köpüğü kaşıkla fincanlara paylaştır, kahveyi yavaşça dök. Telvenin dibe çökmesi için 1 dakika bekle; afiyet olsun!</p><button class="step-done" type="button" data-tr="Kahvem hazır!" data-en="My coffee is ready!">Kahvem hazır! <span>♡</span></button></div></article>
+        </div>
+        <div class="finished-card" id="finishedCard" hidden><span>☕</span><div><b data-tr="Eline sağlık!" data-en="You made it!">Eline sağlık!</b><p data-tr="Kahven hazır. Bir yudum al ve keyfini çıkar." data-en="Your coffee is ready. Take a sip and enjoy.">Kahven hazır. Bir yudum al ve keyfini çıkar.</p></div><button id="restartButton" type="button" data-tr="Baştan başla" data-en="Start over">Baştan başla</button></div>
+      </section>
+    </section>
+    <footer><span>bir fincan <b>·</b> <span data-tr="evde, kendi usulünce" data-en="at home, your way">evde, kendi usulünce</span></span><span data-tr="Güzel kahve, güzel bir mola." data-en="Good coffee, a lovely pause.">Güzel kahve, güzel bir mola.</span></footer>
+  </main>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="game.js"></script>
 </body>
